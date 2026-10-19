@@ -4,7 +4,8 @@ import pandas as pd
 import streamlit as st
 
 from src.db import get_connection
-from src.followup import draft_followup, group_actionable
+from src.followup import group_actionable
+from src.followup_graph import run_followup
 from src.hygiene import find_issues
 
 st.set_page_config(page_title="Partner Ops Agent", layout="wide")
@@ -58,7 +59,8 @@ with tab_triage:
 with tab_hygiene:
     if issues:
         st.dataframe(pd.DataFrame(issues)[["severity", "company", "tier", "issue", "detail"]],
-                     hide_index=True, width="stretch")
+                     hide_index=True, width="stretch",
+                     column_config={"severity": "Severity", "company": "Company", "tier": "Tier", "issue": "Issue", "detail": "Detail"})
     else:
         st.success("No pipeline issues found.")
 
@@ -72,11 +74,20 @@ with tab_followup:
 
         drafts = st.session_state.setdefault("drafts", {})
         if st.button("Draft follow-up email"):
-            with st.spinner("Drafting with the LLM..."):
-                drafts[opp_id] = draft_followup(conn, opp_id, flagged[opp_id])
+            with st.spinner("Drafting and fact-checking..."):
+                drafts[opp_id] = run_followup(conn, opp_id, flagged[opp_id])
 
         if opp_id in drafts:
             draft = drafts[opp_id]
+            if draft["passed"]:
+                st.success(f"Passed fact-check after {draft['attempts']} attempt(s)")
+            else:
+                st.warning(f"Needs human review: still failing the fact-check after {draft['attempts']} attempts")
             st.text_input("Subject", draft["subject"])
             st.text_area("Body (edit before sending)", draft["body"], height=260)
             st.info(f"Internal note: {draft['internal_note']}")
+            with st.expander("Fact-check log"):
+                for h in draft["history"]:
+                    st.markdown(f"**Attempt {h['attempt']}:** {'Passed' if h['passed'] else 'Failed'}")
+                    for p in h["problems"]:
+                        st.markdown(f"- {p}")
