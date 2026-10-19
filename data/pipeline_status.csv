@@ -1,0 +1,13 @@
+opportunity_id,stage,owner,last_contact_date,next_follow_up_date
+OPP-001,Contacted,Priya Shah,2026-10-05,2026-10-20
+OPP-002,Meeting scheduled,Daniel Brooks,2026-10-10,2026-10-22
+OPP-003,New,,,
+OPP-004,Proposal sent,Priya Shah,2026-09-12,2026-09-26
+OPP-005,Contacted,Daniel Brooks,2026-10-01,2026-10-14
+OPP-006,New,,,
+OPP-007,Contacted,Maria Lopez,2026-09-10,2026-10-30
+OPP-008,New,,,
+OPP-009,Meeting scheduled,Maria Lopez,2026-10-12,2026-10-19
+OPP-010,New,Daniel Brooks,,
+OPP-011,Contacted,,2026-10-08,2026-10-18
+OPP-012,New,,,
