@@ -26,15 +26,12 @@ PROMPT = ChatPromptTemplate.from_messages([
     ("system",
      "You draft follow-up emails for IDC's partnerships team. IDC is a global technology research and advisory firm. "
      "Write a warm, concise, professional email to the partner company. "
-     "Do not invent prices, dates, deliverables, or commitments that are not in the context. "
+     "Do not invent prices, dates, meeting times, availability, deliverables, or commitments that are not in the deal facts. "
      "Never describe when something happened (e.g. 'last week') unless you use the exact last contact date given. "
-     "Sign off with only the deal owner's name and 'IDC' on the next line, or 'IDC Partnerships Team' if there is no owner. Do not add job titles. "
+     "Sign off with only the deal owner's name and 'IDC' on the next line, or 'IDC Partnerships Team' if there is no owner. "
+     "Do not add job titles. "
      "The internal note is for IDC staff only: flag anything that should be fixed before the email is sent."),
-    ("human",
-     "Company: {company}\nPartner type: {partner_type}\nWhat they want: {description}\n"
-     "Current stage: {stage}\nDeal owner: {owner}\nLast contact date: {last_contact}\nTier: {tier}\n"
-     "Suggested next action from triage: {next_action}\n"
-     "Problems found in the pipeline: {issues}"),
+    ("human", "Deal facts:\n{facts}\n\n{feedback}"),
 ])
 
 
@@ -47,19 +44,34 @@ def group_actionable(issues: list[dict]) -> dict[str, list[dict]]:
             if any(i["issue"] in ACTIONABLE_ISSUES for i in items)}
 
 
-def draft_followup(conn, opportunity_id: str, issues: list[dict]) -> dict:
-    """Ask the LLM for a follow-up email for one flagged deal."""
+def get_facts(conn, opportunity_id: str, issues: list[dict]) -> tuple[str, str]:
+    """Return the company name and a plain-text summary of everything known about the deal."""
     row = conn.execute(CONTEXT_QUERY, (opportunity_id,)).fetchone()
+    facts = (
+        f"Company: {row['company']}\n"
+        f"Partner type: {row['partner_type']}\n"
+        f"What they want: {row['description']}\n"
+        f"Current stage: {row['stage']}\n"
+        f"Deal owner: {row['owner'] or 'none assigned'}\n"
+        f"Last contact date: {row['last_contact_date'] or 'no contact yet'}\n"
+        f"Tier: {row['tier']}\n"
+        f"Suggested next action from triage: {row['next_action']}\n"
+        f"Problems found in the pipeline: " + "; ".join(f"{i['issue']}: {i['detail']}" for i in issues)
+    )
+    return row["company"], facts
+
+
+def write_draft(facts: str, problems: list[str] | None = None) -> dict:
+    """Ask the LLM for a draft. If a previous draft failed validation, include the problems to fix."""
+    feedback = ""
+    if problems:
+        feedback = ("Your previous draft was rejected by the fact-checker for these unsupported claims. "
+                    "Rewrite the email without them:\n- " + "\n- ".join(problems))
     chain = PROMPT | get_llm().with_structured_output(FollowUpDraft)
-    draft = chain.invoke({
-        "company": row["company"],
-        "partner_type": row["partner_type"],
-        "description": row["description"],
-        "stage": row["stage"],
-        "owner": row["owner"] or "none assigned",
-        "last_contact": row["last_contact_date"] or "no contact yet",
-        "tier": row["tier"],
-        "next_action": row["next_action"],
-        "issues": "; ".join(f"{i['issue']}: {i['detail']}" for i in issues),
-    })
-    return {"opportunity_id": opportunity_id, "company": row["company"], **draft.model_dump()}
+    return chain.invoke({"facts": facts, "feedback": feedback}).model_dump()
+
+
+def draft_followup(conn, opportunity_id: str, issues: list[dict]) -> dict:
+    """Single draft with no validation (kept so the current dashboard still works)."""
+    company, facts = get_facts(conn, opportunity_id, issues)
+    return {"opportunity_id": opportunity_id, "company": company, **write_draft(facts)}
