@@ -1,0 +1,13 @@
+opportunity_id,company,partner_type,industry,region,employees,est_annual_value_usd,source,submitted_date,description
+OPP-001,Lumenra AI,AI model provider,Technology,North America,850,450000,Inbound form,2026-09-02,"Wants IDC market sizing data to support enterprise GenAI sales"
+OPP-002,Quillstone Analytics,Data platform,Technology,Europe,320,180000,Referral,2026-09-05,"Interested in co-branded research on data governance adoption"
+OPP-003,Harbor & Finch Consulting,Consultancy,Professional Services,North America,60,40000,Event,2026-09-08,"Small firm asking about reseller terms for IDC reports"
+OPP-004,Vectorly Cloud,Cloud infrastructure,Technology,Asia Pacific,2400,900000,Inbound form,2026-09-10,"Large cloud vendor wants custom AI infrastructure spending forecasts"
+OPP-005,Bramble Health Systems,Healthcare software,Healthcare,North America,1100,250000,Referral,2026-09-12,"Exploring joint webinar on AI in clinical workflows"
+OPP-006,Northgate Retail Tech,Retail software,Retail,Europe,140,,Inbound form,2026-09-15,"Vague request for partnership info"
+OPP-007,Corvid Security,Cybersecurity,Technology,North America,600,320000,Event,2026-09-18,"Wants IDC analyst validation for new AI security product launch"
+OPP-008,Tessellate Labs,AI model provider,Technology,North America,45,25000,Inbound form,2026-09-20,"Early-stage startup asking for free research access"
+OPP-009,Meridian Fintech,Financial software,Financial Services,Europe,780,400000,Referral,2026-09-22,"Seeks market data on AI adoption in banking for investor deck"
+OPP-010,Pinecrest Manufacturing Cloud,Industrial software,Manufacturing,Asia Pacific,500,150000,Event,2026-09-25,"Interested in sponsored research on smart factory spending"
+OPP-011,Arcadia Agents,AI agent platform,Technology,North America,210,275000,Inbound form,2026-09-28,"Wants co-marketing partnership around agentic AI benchmarks"
+OPP-012,Orbitwise Telecom,Telecommunications,Telecom,,3000,600000,Referral,2026-10-01,"Large telco exploring AI network analytics research partnership"
