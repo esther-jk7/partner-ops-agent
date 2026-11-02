@@ -1,17 +1,17 @@
-opportunity_id,company,partner_type,industry,region,employees,est_annual_value_usd,source,submitted_date,description
-OPP-001,Lumenra AI,AI model provider,Technology,North America,850,450000,Inbound form,2026-09-02,"Wants IDC market sizing data to support enterprise GenAI sales"
-OPP-002,Quillstone Analytics,Data platform,Technology,Europe,320,180000,Referral,2026-09-05,"Interested in co-branded research on data governance adoption"
-OPP-003,Harbor & Finch Consulting,Consultancy,Professional Services,North America,60,40000,Event,2026-09-08,"Small firm asking about reseller terms for IDC reports"
-OPP-004,Vectorly Cloud,Cloud infrastructure,Technology,Asia Pacific,2400,900000,Inbound form,2026-09-10,"Large cloud vendor wants custom AI infrastructure spending forecasts"
-OPP-005,Bramble Health Systems,Healthcare software,Healthcare,North America,1100,250000,Referral,2026-09-12,"Exploring joint webinar on AI in clinical workflows"
-OPP-006,Northgate Retail Tech,Retail software,Retail,Europe,140,,Inbound form,2026-09-15,"Vague request for partnership info"
-OPP-007,Corvid Security,Cybersecurity,Technology,North America,600,320000,Event,2026-09-18,"Wants IDC analyst validation for new AI security product launch"
-OPP-008,Tessellate Labs,AI model provider,Technology,North America,45,25000,Inbound form,2026-09-20,"Early-stage startup asking for free research access"
-OPP-009,Meridian Fintech,Financial software,Financial Services,Europe,780,400000,Referral,2026-09-22,"Seeks market data on AI adoption in banking for investor deck"
-OPP-010,Pinecrest Manufacturing Cloud,Industrial software,Manufacturing,Asia Pacific,500,150000,Event,2026-09-25,"Interested in sponsored research on smart factory spending"
-OPP-011,Arcadia Agents,AI agent platform,Technology,North America,210,275000,Inbound form,2026-09-28,"Wants co-marketing partnership around agentic AI benchmarks"
-OPP-012,Orbitwise Telecom,Telecommunications,Telecom,,3000,600000,Referral,2026-10-01,"Large telco exploring AI network analytics research partnership"
-OPP-013,Aurelith AI,AI model provider,Technology,North America,1200,600000,Referral,2026-03-10,"Embed IDC market forecasts in its enterprise AI research assistant"
-OPP-014,Kestrelyn Data,Data platform,Technology,Europe,900,250000,Inbound form,2026-05-20,"Data alliance combining its channel sales data with IDC forecasts"
-OPP-015,Corvane Assist,AI model provider,Technology,North America,400,300000,Inbound form,2026-06-02,"Connector to bring IDC research into its enterprise agent platform"
-OPP-016,Mirevale Labs,Data platform,Technology,Europe,2500,150000,Referral,2026-07-14,"Co-marketing webinar series on AI infrastructure spending"
+opportunity_id,company,partner_type,industry,region,employees,est_annual_value_usd,source,submitted_date,description,partnership_model,revenue_model,integration_effort,wants_model_training
+OPP-001,Lumenra AI,AI model provider,Technology,North America,850,450000,Inbound form,2026-09-02,Wants IDC market sizing data to support enterprise GenAI sales,Content licensing,Licensing,Low,Yes
+OPP-002,Quillstone Analytics,Data platform,Technology,Europe,320,180000,Referral,2026-09-05,Interested in co-branded research on data governance adoption,Co-marketing,Sponsorship,Medium,No
+OPP-003,Harbor & Finch Consulting,Consultancy,Professional Services,North America,60,40000,Event,2026-09-08,Small firm asking about reseller terms for IDC reports,Content licensing,Revenue share,Low,No
+OPP-004,Vectorly Cloud,Cloud infrastructure,Technology,Asia Pacific,2400,900000,Inbound form,2026-09-10,Large cloud vendor wants custom AI infrastructure spending forecasts,Client request,Client purchase,Medium,No
+OPP-005,Bramble Health Systems,Healthcare software,Healthcare,North America,1100,250000,Referral,2026-09-12,Exploring joint webinar on AI in clinical workflows,Co-marketing,No revenue,Low,No
+OPP-006,Northgate Retail Tech,Retail software,Retail,Europe,140,,Inbound form,2026-09-15,Vague request for partnership info,,,,Unknown
+OPP-007,Corvid Security,Cybersecurity,Technology,North America,600,320000,Event,2026-09-18,Wants IDC analyst validation for new AI security product launch,Client request,Client purchase,Medium,No
+OPP-008,Tessellate Labs,AI model provider,Technology,North America,45,25000,Inbound form,2026-09-20,Early-stage startup asking for free research access,Content licensing,No revenue,Low,Unknown
+OPP-009,Meridian Fintech,Financial software,Financial Services,Europe,780,400000,Referral,2026-09-22,Seeks market data on AI adoption in banking for investor deck,Client request,Client purchase,Medium,No
+OPP-010,Pinecrest Manufacturing Cloud,Industrial software,Manufacturing,Asia Pacific,500,150000,Event,2026-09-25,Interested in sponsored research on smart factory spending,Client request,Client purchase,Medium,No
+OPP-011,Arcadia Agents,AI agent platform,Technology,North America,210,275000,Inbound form,2026-09-28,Wants co-marketing partnership around agentic AI benchmarks,Co-marketing,Sponsorship,Medium,No
+OPP-012,Orbitwise Telecom,Telecommunications,Telecom,,3000,600000,Referral,2026-10-01,Large telco exploring AI network analytics research partnership,Data alliance,,High,No
+OPP-013,Aurelith AI,AI model provider,Technology,North America,1200,600000,Referral,2026-03-10,Embed IDC market forecasts in its enterprise AI research assistant,Platform distribution,Licensing,Medium,No
+OPP-014,Kestrelyn Data,Data platform,Technology,Europe,900,250000,Inbound form,2026-05-20,Data alliance combining its channel sales data with IDC forecasts,Data alliance,Revenue share,High,No
+OPP-015,Corvane Assist,AI model provider,Technology,North America,400,300000,Inbound form,2026-06-02,Connector to bring IDC research into its enterprise agent platform,Platform distribution,Revenue share,Medium,No
+OPP-016,Mirevale Labs,Data platform,Technology,Europe,2500,150000,Referral,2026-07-14,Co-marketing webinar series on AI infrastructure spending,Co-marketing,Sponsorship,Low,No

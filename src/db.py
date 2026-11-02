@@ -17,7 +17,11 @@ CREATE TABLE IF NOT EXISTS opportunities (
     est_annual_value_usd REAL,
     source TEXT,
     submitted_date TEXT,
-    description TEXT
+    description TEXT,
+    partnership_model TEXT,
+    revenue_model TEXT,
+    integration_effort TEXT,
+    wants_model_training TEXT
 );
 
 CREATE TABLE IF NOT EXISTS triage_results (
@@ -27,7 +31,12 @@ CREATE TABLE IF NOT EXISTS triage_results (
     rationale TEXT,
     next_action TEXT,
     missing_fields TEXT,
-    scored_at TEXT
+    scored_at TEXT,
+    reasons TEXT,
+    needs_review INTEGER,
+    review_reasons TEXT,
+    route_to_sales INTEGER,
+    explanation_source TEXT
 );
 
 CREATE TABLE IF NOT EXISTS pipeline (
@@ -66,13 +75,17 @@ def init_db(conn: sqlite3.Connection) -> None:
 
 
 def save_triage(conn: sqlite3.Connection, result: dict) -> None:
-    """Insert or update the triage result for one opportunity."""
+    """Insert or update the triage result for one opportunity, with its reasons and flags."""
     conn.execute(
         """INSERT OR REPLACE INTO triage_results
-           (opportunity_id, score, tier, rationale, next_action, missing_fields, scored_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?)""",
+           (opportunity_id, score, tier, rationale, next_action, missing_fields, scored_at,
+            reasons, needs_review, review_reasons, route_to_sales, explanation_source)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (result["opportunity_id"], result["score"], result["tier"], result.get("rationale"),
          result.get("next_action"), json.dumps(result["missing_fields"]),
-         datetime.now().isoformat(timespec="seconds")),
+         datetime.now().isoformat(timespec="seconds"),
+         json.dumps(result.get("reasons", [])), int(bool(result.get("needs_review"))),
+         json.dumps(result.get("review_reasons", [])), int(bool(result.get("route_to_sales"))),
+         result.get("explanation_source")),
     )
     conn.commit()

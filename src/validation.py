@@ -21,6 +21,15 @@ DATE_COLUMNS = {
     "deliverables": ["due_date", "completed_date"],
 }
 NUMBER_COLUMNS = {"opportunities": ["employees", "est_annual_value_usd"]}
+SOFT_ALLOWED_VALUES = {
+    "opportunities": {
+        "partnership_model": {"Platform distribution", "Data alliance", "Content licensing",
+                              "Co-marketing", "Client request"},
+        "revenue_model": {"Licensing", "Revenue share", "Sponsorship", "No revenue", "Client purchase"},
+        "integration_effort": {"Low", "Medium", "High"},
+        "wants_model_training": {"Yes", "No", "Unknown"},
+    },
+}
 ALLOWED_VALUES = {
     "pipeline": {"stage": {"New", "Contacted", "Meeting scheduled", "Proposal sent",
                            "Contracting", "Signed", "Activating", "Live"}},
@@ -87,6 +96,11 @@ def validate(df: pd.DataFrame, table: str, conn) -> pd.DataFrame:
             number = pd.to_numeric(value, errors="coerce")
             if not _blank(value) and (pd.isna(number) or number < 0):
                 _log(table, row_id, "warning", col, f"invalid number '{value}'; value cleared")
+                df.at[idx, col] = None
+        for col, allowed in SOFT_ALLOWED_VALUES.get(table, {}).items():
+            value = row.get(col)
+            if not _blank(value) and value not in allowed:
+                _log(table, row_id, "warning", col, f"unknown value '{value}'; value cleared")
                 df.at[idx, col] = None
         if table == "pipeline" and row.get("stage") in POST_SIGNATURE_STAGES and _blank(row.get("signed_date")):
             _log(table, row_id, "warning", "signed_date", f"stage is '{row.get('stage')}' but no signed date")
