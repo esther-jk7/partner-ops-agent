@@ -136,3 +136,17 @@ def test_markdown_shows_grouped_story_once_with_caveat(monkeypatch):
     assert "Also covered by: [Axios]" in text
     assert "Relevance comes from a rule table" in text
     assert "Gartner: URLError" in text
+
+
+def test_untrusted_outlet_is_flagged_but_not_demoted(monkeypatch):
+    trade_press = [{**ITEMS[1], "source": "Home Textiles Today"}]
+    use_fake(monkeypatch, judgments=[judgment(1, signal_type="Earnings or financials")])
+    (row,) = classify_company(ENTRY, trade_press)
+    assert row["relevance"] == "Medium"
+    assert row["source_check"] == brief_module.SOURCE_WARNING
+
+
+def test_trusted_outlet_and_company_newsroom_pass_the_source_check(monkeypatch):
+    items = [ITEMS[0], {**ITEMS[1], "source": "Anthropic"}]
+    use_fake(monkeypatch, judgments=[judgment(1), judgment(2)])
+    assert all(r["source_check"] is None for r in classify_company(ENTRY, items))

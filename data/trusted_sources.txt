@@ -1,0 +1,18 @@
+# One outlet per line, matched exactly (not case-sensitive).
+# A company's own newsroom always counts as trusted. The partnerships team owns this list.
+Reuters
+Bloomberg
+CNBC
+The Wall Street Journal
+The New York Times
+Financial Times
+Axios
+The Information
+TechCrunch
+The Verge
+AP News
+Associated Press
+Business Wire
+PR Newswire
+GeekWire
+Fortune

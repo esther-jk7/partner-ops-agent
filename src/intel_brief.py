@@ -10,6 +10,7 @@ Any number in a judgment that isn't in its inputs gets that judgment rejected.
 import json
 import re
 import time
+from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
@@ -77,6 +78,8 @@ RELEVANCE_RULES = {
 OWNER_BY_RELATIONSHIP = {"Partner": "Partner GTM & Activation", "Competitor": "Leadership",
                          "Channel to watch": "Strategic Partner Development"}
 ROUTE_ACTION = "Read the article and route it to the right director"
+TRUSTED_SOURCES_PATH = "data/trusted_sources.txt"
+SOURCE_WARNING = "Source not on the trusted list: verify the story with a trusted outlet before sharing"
 
 MAX_ATTEMPTS = 2
 RETRY_PAUSE_SECONDS = 2
@@ -107,9 +110,26 @@ def channel_term(entry: dict, title: str) -> str | None:
     return next((t for t in terms if re.search(rf"\b{re.escape(t)}\b", title, re.IGNORECASE)), None)
 
 
+@lru_cache(maxsize=1)
+def trusted_sources() -> frozenset[str]:
+    """Outlets the team trusts, from an editable text file; comment lines start with #."""
+    path = Path(TRUSTED_SOURCES_PATH)
+    if not path.exists():
+        return frozenset()
+    lines = (line.strip() for line in path.read_text().splitlines())
+    return frozenset(line.lower() for line in lines if line and not line.startswith("#"))
+
+
+def is_trusted(source: str, entry: dict) -> bool:
+    """True for a listed outlet or the company's own newsroom."""
+    source = (source or "").lower()
+    return entry["company"].split()[0].lower() in source or source in trusted_sources()
+
+
 def finalize(row: dict, entry: dict) -> dict:
     """Set relevance from the rules, then make the action and owner fit that level."""
     row["relevance_basis"], row["rule_note"] = None, None
+    row["source_check"] = None if is_trusted(row["source"], entry) else SOURCE_WARNING
     if row["judgment_source"] == "llm":
         row["relevance"], row["relevance_basis"] = rule_relevance(entry["relationship"], row["signal_type"])
     term = channel_term(entry, row["title"])
@@ -201,6 +221,8 @@ def render_markdown(brief: dict) -> str:
                 out.append(f"  - {i['rule_note']}")
             elif i.get("relevance_basis"):
                 out.append(f"  - Why rated {i['relevance']}: {i['relevance_basis']}")
+            if i.get("source_check"):
+                out.append(f"  - {i['source_check']}")
             if i["judgment_source"] != "llm":
                 out.append(f"  - AI judgment: {i['judgment_source']}")
             if i["also_covered_by"]:

@@ -187,6 +187,8 @@ with tab_intel:
                         st.caption(i["rule_note"])
                     elif i.get("relevance_basis"):
                         st.caption(f"Why rated {i['relevance']}: {i['relevance_basis']}")
+                    if i.get("source_check"):
+                        st.warning(i["source_check"])
                     if i["judgment_source"] != "llm":
                         st.caption(f"AI judgment: {i['judgment_source']}")
                     if i["also_covered_by"]:
