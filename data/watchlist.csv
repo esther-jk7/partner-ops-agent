@@ -1,0 +1,6 @@
+company,relationship,query,why_watch,channel_terms
+Anthropic,Partner,Anthropic,"Distribution partner: IDC Quanta is available inside Claude through a connector, and IDC uses Claude across the company",connector;Cowork;MCP;Claude for Enterprise
+Amazon Web Services,Partner,Amazon Web Services,"Distribution partner: IDC research and data are available inside Amazon Quick Research",Quick Research;Quick Suite
+Microsoft,Channel to watch,Microsoft AI,"Channel to watch: the IDC Quanta connector works in Claude's Microsoft Office add-ins",Claude;Anthropic;add-in
+Gartner,Competitor,Gartner,"Competitor: technology research and advisory firm",ChatGPT;OpenAI;Claude;Anthropic;Copilot;Gemini;connector;MCP
+Forrester,Competitor,Forrester Research,"Competitor: technology research and advisory firm",ChatGPT;OpenAI;Claude;Anthropic;Copilot;Gemini;connector;MCP
