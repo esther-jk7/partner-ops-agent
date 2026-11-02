@@ -35,7 +35,21 @@ CREATE TABLE IF NOT EXISTS pipeline (
     stage TEXT DEFAULT 'New',
     owner TEXT,
     last_contact_date TEXT,
-    next_follow_up_date TEXT
+    next_follow_up_date TEXT,
+    owner_role TEXT,
+    exec_sponsor TEXT,
+    signed_date TEXT,
+    activation_date TEXT
+);
+
+CREATE TABLE IF NOT EXISTS deliverables (
+    deliverable_id TEXT PRIMARY KEY,
+    opportunity_id TEXT REFERENCES opportunities(opportunity_id),
+    deliverable TEXT NOT NULL,
+    owner TEXT,
+    due_date TEXT,
+    status TEXT DEFAULT 'Not started',
+    completed_date TEXT
 );
 """
 

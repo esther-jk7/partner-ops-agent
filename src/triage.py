@@ -1,5 +1,7 @@
 """Triage: rules decide the score and tier, the LLM explains them and suggests a next step."""
 
+import time
+
 from pydantic import BaseModel, Field
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -39,16 +41,42 @@ def format_opportunity(opp: dict) -> str:
     return "\n".join(f"{key}: {value}" for key, value in opp.items() if not is_missing(value))
 
 
+MAX_ATTEMPTS = 2
+RETRY_PAUSE_SECONDS = 2
+
+
 def triage(opp: dict) -> dict:
-    """Score an opportunity with the rules, then add an LLM-written rationale and next action."""
+    """Score an opportunity with the rules, then add an LLM-written rationale and next action.
+
+    If the LLM fails twice, the rules-based score is kept and the explanation is marked
+    for manual review, so one bad response never stops the whole batch.
+    """
     result = score_opportunity(opp)
+    missing = ", ".join(FIELD_LABELS.get(f, f) for f in result["missing_fields"]) or "none"
     chain = PROMPT | get_llm().with_structured_output(TriageNote)
-    note = chain.invoke({
+    inputs = {
         "opportunity": format_opportunity(opp),
         "score": result["score"],
         "tier": result["tier"],
         "breakdown": result["breakdown"],
-        "missing": ", ".join(FIELD_LABELS.get(f, f) for f in result["missing_fields"]) or "none",
-    })
-    result.update(note.model_dump())
+        "missing": missing,
+    }
+
+    last_error = None
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        try:
+            note = chain.invoke(inputs)
+            result.update(note.model_dump())
+            return result
+        except Exception as err:  # provider errors vary (bad output, rate limits, timeouts)
+            last_error = err
+            if attempt < MAX_ATTEMPTS:
+                time.sleep(RETRY_PAUSE_SECONDS)
+
+    print(f"  ! {result['opportunity_id']}: LLM explanation failed after {MAX_ATTEMPTS} attempts "
+          f"({type(last_error).__name__}); saved the rules-based score for manual review")
+    result["rationale"] = (f"Automated explanation unavailable. Score {result['score']}/90 and tier "
+                           f"{result['tier']} come from the rules. Point breakdown: {result['breakdown']}")
+    result["next_action"] = (f"Review manually. Collect missing fields: {missing}" if missing != "none"
+                             else "Review manually: automated explanation unavailable")
     return result

@@ -1,0 +1,10 @@
+deliverable_id,opportunity_id,deliverable,owner,due_date,status,completed_date
+DEL-001,OPP-013,API access enabled,Jordan Kim,2026-07-01,Done,2026-06-28
+DEL-002,OPP-013,Joint launch announcement,Jordan Kim,2026-08-01,Done,2026-08-01
+DEL-003,OPP-013,Quarterly usage review,Jordan Kim,2026-11-20,Not started,
+DEL-004,OPP-014,Kickoff call held,Jordan Kim,2026-09-25,Done,2026-09-22
+DEL-005,OPP-014,Data feed format agreed,Jordan Kim,2026-10-15,In progress,
+DEL-006,OPP-015,Connector technical spec approved,Jordan Kim,2026-10-20,Done,2026-10-18
+DEL-007,OPP-015,Sandbox API credentials issued,Jordan Kim,2026-10-30,In progress,
+DEL-008,OPP-015,Joint webinar scheduled,Jordan Kim,2026-11-15,Not started,
+DEL-009,OPP-016,Contract redlines returned,Priya Shah,2026-11-06,In progress,

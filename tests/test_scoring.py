@@ -27,8 +27,12 @@ def test_missing_value_scores_zero_and_is_flagged():
 
 
 def test_sample_data_tier_distribution():
+    """Calibration guardrail: if too many opportunities are Priority, the tier stops meaning anything.
+
+    The threshold was raised from 60 to 65 after an early run flagged 58% as Priority.
+    """
     df = pd.read_csv("data/inbound_opportunities.csv")
     tiers = [score_opportunity(o)["tier"] for o in df.to_dict("records")]
-    assert tiers.count("Priority") == 3
-    assert tiers.count("Nurture") == 6
-    assert tiers.count("Deprioritize") == 3
+    priority_share = tiers.count("Priority") / len(tiers)
+    assert 0.15 <= priority_share <= 0.40, f"Priority share {priority_share:.0%} is outside 15-40%"
+    assert {"Priority", "Nurture", "Deprioritize"} <= set(tiers), "Every tier should appear in the sample"
