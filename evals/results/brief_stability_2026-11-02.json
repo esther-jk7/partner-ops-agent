@@ -1,0 +1,39 @@
+{
+  "summary": {
+    "snapshot": "snapshot_2026-11-02.json",
+    "date": "2026-11-02",
+    "runs": 3,
+    "same_relevance_every_run": "29/30",
+    "same_signal_type_every_run": "27/30",
+    "signal_changed_but_relevance_did_not": 2,
+    "stories_per_run": [
+      23,
+      23,
+      21
+    ]
+  },
+  "relevance_changed": {
+    "WeChange.AI helps save public sector staff 2-5 hours per week with Microsoft Azure services": [
+      "Low",
+      "Low",
+      "Medium"
+    ]
+  },
+  "signal_changed": {
+    "WeChange.AI helps save public sector staff 2-5 hours per week with Microsoft Azure services": [
+      "Research publication",
+      "Third-party mention",
+      "Partnership"
+    ],
+    "Microsoft's AI Risk Report Misses This Key Detail": [
+      "Third-party mention",
+      "Market commentary",
+      "Market commentary"
+    ],
+    "Forrester Study Finds Hack The Box Delivered 330% ROI in Cybersecurity Workforce Readiness": [
+      "Research publication",
+      "Research publication",
+      "Third-party mention"
+    ]
+  }
+}

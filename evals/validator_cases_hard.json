@@ -1,0 +1,21 @@
+{
+  "deals": {
+    "A": "Company: Quillstone Analytics\nPartner type: Data platform\nOpportunity: Interested in co-branded research on data governance adoption\nStage: Meeting scheduled\nDeal owner: Daniel Brooks\nLast contact: 2026-10-10\nFollow-up was due: 2026-10-22\nIssue: Overdue follow-up",
+    "B": "Company: Bramble Health Systems\nPartner type: Healthcare software\nOpportunity: Exploring joint webinar on AI in clinical workflows\nStage: Contacted\nDeal owner: Daniel Brooks\nLast contact: 2026-10-01\nFollow-up was due: 2026-10-14\nIssues: Overdue follow-up; Stale deal",
+    "C": "Company: Kestrelyn Data\nPartner type: Data platform\nPartnership: Data alliance combining its channel sales data with IDC forecasts\nStage: Signed on 2026-09-15, not yet live\nDeal owner: Jordan Kim\nLast contact: 2026-10-06\nFollow-up was due: 2026-10-27\nCompleted deliverable: Kickoff call held on 2026-09-22\nOpen deliverable: Data feed format agreed, due 2026-10-15, status In progress\nIssues: Overdue follow-up; Signed but not activated; Overdue deliverable"
+  },
+  "cases": [
+    {"id": "H-E1", "deal": "A", "error_type": "implied past meeting", "marker": "our meeting", "subject": "Following up", "body": "Hi [First Name],\n\nFollowing up on our meeting about co-branded research on data governance adoption. What did your team think?\n\nBest,\nDaniel Brooks"},
+    {"id": "H-E2", "deal": "A", "error_type": "off-by-one date", "marker": "October 11", "subject": "Checking in", "body": "Hi [First Name],\n\nI wanted to check in since we last spoke on October 11 about the co-branded research.\n\nBest,\nDaniel Brooks"},
+    {"id": "H-E3", "deal": "B", "error_type": "hedged claim", "marker": "budget", "subject": "Webinar next steps", "body": "Hi [First Name],\n\nI believe you mentioned your budget for the joint webinar was approved. Shall we pick a format?\n\nBest,\nDaniel Brooks"},
+    {"id": "H-E4", "deal": "C", "error_type": "soft commitment", "marker": "end of the month", "subject": "Data feed timing", "body": "Hi [First Name],\n\nWe expect the data feed to be live by the end of the month. Let me know if you need anything from us.\n\nBest,\nJordan Kim"},
+    {"id": "H-E5", "deal": "C", "error_type": "unsupported attribution", "marker": "your end", "subject": "Data feed format", "body": "Hi [First Name],\n\nSince your team is still finalizing the data feed format on your end, is there anything we can do to help?\n\nBest,\nJordan Kim"},
+    {"id": "H-E6", "deal": "B", "error_type": "two claims", "marker": "last week", "subject": "Thanks for your note", "body": "Hi [First Name],\n\nThanks for your note last week. As promised, I've included our sponsorship rates below.\n\nBest,\nDaniel Brooks"},
+    {"id": "H-E7", "deal": "A", "error_type": "number not in facts", "marker": "300", "subject": "Research for your team", "body": "Hi [First Name],\n\nWith a team of roughly 300 people, Quillstone would get a lot out of co-branded research on data governance.\n\nBest,\nDaniel Brooks"},
+    {"id": "H-E8", "deal": "C", "error_type": "status overstated", "marker": "live", "subject": "Next phase", "body": "Hi [First Name],\n\nNow that our data alliance is live, let's talk about the next phase.\n\nBest,\nJordan Kim"},
+    {"id": "H-C1", "deal": "C", "subject": "Data feed format", "body": "Hi [First Name],\n\nFollowing up on our kickoff call on September 22 and the data feed format, which was due October 15. Can we find time to close it out?\n\nBest,\nJordan Kim"},
+    {"id": "H-C2", "deal": "C", "subject": "Checking in", "body": "Hi [First Name],\n\nSince we signed our data alliance in September, I wanted to check in on the data feed format.\n\nBest,\nJordan Kim"},
+    {"id": "H-C3", "deal": "A", "subject": "Following up", "body": "Hi [First Name],\n\nOur last conversation was on October 10, and I wanted to follow up on the co-branded research on data governance adoption.\n\nBest,\nDaniel Brooks"},
+    {"id": "H-C4", "deal": "B", "subject": "Reconnecting", "body": "Hi [First Name],\n\nI know it's been a while since early October, when we last spoke about the joint webinar. Is it still of interest?\n\nBest,\nDaniel Brooks"}
+  ]
+}

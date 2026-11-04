@@ -1,0 +1,133 @@
+{
+  "summary": {
+    "case_set": "validator_cases_hard.json",
+    "date": "2026-11-02",
+    "model": "openai/gpt-oss-120b",
+    "planted_caught": "6/7",
+    "caught_quoting_the_planted_claim": "5/7",
+    "false_alarms_on_clean_drafts": "0/4",
+    "failed_model_calls": 1
+  },
+  "rows": [
+    {
+      "id": "H-E1",
+      "error_type": "implied past meeting",
+      "marker": "our meeting",
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "H-E2",
+      "error_type": "off-by-one date",
+      "marker": "October 11",
+      "passed": false,
+      "problems": [
+        "\"I wanted to check in since we last spoke on October 11 about the co-branded research.\" is unsupported because the deal facts state the last contact was on 2026-10-10, not October 11."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "H-E3",
+      "error_type": "hedged claim",
+      "marker": "budget",
+      "passed": false,
+      "problems": [
+        "\"I believe you mentioned your budget for the joint webinar was approved.\" - The deal facts do not contain any information about the budget being approved."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "H-E4",
+      "error_type": "soft commitment",
+      "marker": "end of the month",
+      "passed": false,
+      "problems": [
+        "\"We expect the data feed to be live by the end of the month.\" is not supported: the deal facts state the data feed format is due on 2026-10-15 and is currently In progress, with the partnership not yet live."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "H-E5",
+      "error_type": "unsupported attribution",
+      "marker": "your end",
+      "passed": null,
+      "problems": [],
+      "quoted": false,
+      "error": "BadRequestError"
+    },
+    {
+      "id": "H-E6",
+      "error_type": "two claims",
+      "marker": "last week",
+      "passed": false,
+      "problems": [
+        "\"As promised, I've included our sponsorship rates below.\" \u2013 The email does not actually include any sponsorship rates or attachment, and the deal facts contain no information about sponsorship rates."
+      ],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "H-E7",
+      "error_type": "number not in facts",
+      "marker": "300",
+      "passed": false,
+      "problems": [
+        "\"With a team of roughly 300 people, Quillstone would get a lot out of co-branded research on data governance.\" - The deal facts do not provide any information about Quillstone Analytics' team size, so the claim of \"roughly 300 people\" is unsupported."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "H-E8",
+      "error_type": "status overstated",
+      "marker": "live",
+      "passed": false,
+      "problems": [
+        "\"Now that our data alliance is live\" - The deal facts state the partnership is signed but not yet live."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "H-C1",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "H-C2",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "H-C3",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "H-C4",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    }
+  ]
+}

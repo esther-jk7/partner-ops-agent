@@ -1,0 +1,325 @@
+{
+  "summary": {
+    "case_set": "validator_cases.json",
+    "date": "2026-11-02",
+    "model": "openai/gpt-oss-120b",
+    "planted_caught": "20/20",
+    "caught_quoting_the_planted_claim": "19/20",
+    "false_alarms_on_clean_drafts": "0/10",
+    "failed_model_calls": 0
+  },
+  "rows": [
+    {
+      "id": "A-C1",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "A-C2",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "A-C3",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "A-C4",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "A-E1",
+      "error_type": "meeting time",
+      "marker": "Thursday at 2pm",
+      "passed": false,
+      "problems": [
+        "\"Our call on Thursday\" (email subject) implies a call is already scheduled for Thursday, but the deal facts only indicate a meeting is scheduled without specifying a date or time."
+      ],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "A-E2",
+      "error_type": "attachment",
+      "marker": "attached",
+      "passed": false,
+      "problems": [
+        "\"I've attached the draft research outline on data governance adoption for your review.\" - No attachment or draft research outline is mentioned in the deal facts."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "A-E3",
+      "error_type": "price",
+      "marker": "15% discount",
+      "passed": false,
+      "problems": [
+        "\"We can offer a 15% discount on the sponsorship if you confirm this month.\" is not supported by the deal facts, which do not mention any sponsorship, pricing, or discount."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "A-E4",
+      "error_type": "past event",
+      "marker": "your CMO",
+      "passed": false,
+      "problems": [
+        "\"Thanks for the productive meeting with your CMO last week.\" is unsupported because the deal facts indicate the stage is \"Meeting scheduled\" and no meeting has been recorded as having occurred; there is no evidence a meeting with the CMO took place."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "A-E5",
+      "error_type": "wrong date",
+      "marker": "October 3",
+      "passed": false,
+      "problems": [
+        "\"It's been a few weeks since we last spoke on October 3 about co-branded research.\" - The deal facts record the last contact as 2026-10-10, with no mention of a conversation on October 3."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "A-E6",
+      "error_type": "person not in facts",
+      "marker": "Sarah Chen",
+      "passed": false,
+      "problems": [
+        "\"My colleague Sarah Chen will lead the data governance research on our side.\" is not supported by the deal facts; no mention of Sarah Chen or her role in the provided facts."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "A-E7",
+      "error_type": "commitment",
+      "marker": "guarantee",
+      "passed": false,
+      "problems": [
+        "\"If we start this month...\" - The deal facts do not indicate that the project is scheduled to start this month; no start date is recorded.",
+        "\"...we can guarantee publication of the co-branded research by the end of December.\" - The deal facts contain no timeline or guarantee of publication; this claim is unsupported."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "B-C1",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "B-C2",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "B-C3",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "B-E1",
+      "error_type": "date",
+      "marker": "November 18",
+      "passed": false,
+      "problems": [
+        "\"As discussed, the joint webinar on AI in clinical workflows is scheduled for November 18.\" is unsupported because the deal facts only indicate the webinar is being explored and do not specify any scheduled date."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "B-E2",
+      "error_type": "person not in facts",
+      "marker": "Maria Ruiz",
+      "passed": false,
+      "problems": [
+        "\"IDC analyst Dr. Maria Ruiz has agreed to present at our joint webinar on AI in clinical workflows.\" is not supported by the deal facts; there is no record of Dr. Maria Ruiz's agreement or any confirmed speaker."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "B-E3",
+      "error_type": "price",
+      "marker": "$25,000",
+      "passed": false,
+      "problems": [
+        "\"Our standard webinar package is $25,000, which includes promotion and hosting.\" is unsupported because the deal facts do not specify any price or the contents of a webinar package."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "B-E4",
+      "error_type": "date conflation",
+      "marker": "proposal",
+      "passed": false,
+      "problems": [
+        "\"I'm following up on the proposal I sent you on October 1 for the joint webinar.\" - The deal facts do not record that a proposal was sent on October 1; they only note last contact on that date, not a proposal."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "B-E5",
+      "error_type": "past event",
+      "marker": "confirming",
+      "passed": false,
+      "problems": [
+        "\"Thanks for confirming your team's participation in the joint webinar.\" is unsupported because the deal facts do not indicate that the partner has confirmed participation; the deal is only at the Contacted stage and the webinar is still being explored.",
+        "\"I'll share next steps soon.\" is a commitment not supported by the deal facts; no next steps have been documented or promised yet."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "B-E6",
+      "error_type": "attachment",
+      "marker": "attached",
+      "passed": false,
+      "problems": [
+        "\"I've attached the speaker guidelines for the joint webinar on AI in clinical workflows.\" - The deal facts do not indicate that speaker guidelines have been attached or that any attachment exists."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "B-E7",
+      "error_type": "invented number",
+      "marker": "5,000",
+      "passed": false,
+      "problems": [
+        "\"IDC will promote the joint webinar to our 5,000 healthcare subscribers, so it should draw a strong audience.\" - The deal facts do not specify any promotion plan, nor the number of healthcare subscribers IDC has. This claim is not supported."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "C-C1",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "C-C2",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "C-C3",
+      "error_type": null,
+      "marker": null,
+      "passed": true,
+      "problems": [],
+      "quoted": false,
+      "error": null
+    },
+    {
+      "id": "C-E1",
+      "error_type": "status conflict",
+      "marker": "finalized",
+      "passed": false,
+      "problems": [
+        "\"Now that the data feed format was finalized last week\" is unsupported: the deal facts state the data feed format is an open deliverable, due 2026-10-15, with status In progress, not finalized."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "C-E2",
+      "error_type": "wrong date",
+      "marker": "August",
+      "passed": false,
+      "problems": [
+        "\"Since we signed our data alliance in August\" - the deal was signed on 2026-09-15, not in August."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "C-E3",
+      "error_type": "commitment",
+      "marker": "November 30",
+      "passed": false,
+      "problems": [
+        "\"We're on track to go live with the data alliance on November 30.\" - The deal facts do not specify a planned go-live date; the alliance is signed but not yet live, and no November 30 launch is recorded."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "C-E4",
+      "error_type": "person not in facts",
+      "marker": "Priya Shah",
+      "passed": false,
+      "problems": [
+        "\"Our engineering lead, Priya Shah, will send the API keys for the data feed this week.\" is unsupported because the deal facts do not mention Priya Shah, an engineering lead, nor any commitment that API keys will be sent; the only open deliverable is the data feed format, not API keys."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "C-E5",
+      "error_type": "invented number",
+      "marker": "30%",
+      "passed": false,
+      "problems": [
+        "\"As a reminder, the revenue share gives IDC 30% of revenue from the combined data feed.\" is unsupported because the deal facts do not specify any revenue share percentage."
+      ],
+      "quoted": true,
+      "error": null
+    },
+    {
+      "id": "C-E6",
+      "error_type": "past event",
+      "marker": "last week",
+      "passed": false,
+      "problems": [
+        "\"Thanks for joining last week's kickoff call.\" - The facts record a kickoff call on 2026-09-22, but the email claims it was \"last week\" which is not supported by the timeline (the email is being drafted well after that date)."
+      ],
+      "quoted": true,
+      "error": null
+    }
+  ]
+}
